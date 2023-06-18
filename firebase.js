@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
-import { apiKey } from '@env';
+import { apiKey,appId } from '@env';
 
 
 
@@ -18,7 +18,7 @@ const firebaseConfig = {
   projectId: "gifted-chat-app-2bf90",
   storageBucket: "gifted-chat-app-2bf90.appspot.com",
   messagingSenderId: "719162473291",
-  appId: "1:719162473291:web:1390b4b42ee41b397646ce",
+  appId: appId,
   measurementId: "G-WT4B3J68FB"
 };
 
