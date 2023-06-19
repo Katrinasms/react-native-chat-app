@@ -21,16 +21,26 @@ export default function App() {
           headerShown: false,
         })}/>
         <Stack.Screen name='Register' component={Register} options={() => ({
-          // headerBackVisible: false,
-          // headerShown: false,
+          headerBackVisible: false,
+          headerShown: false,
         })}/>
-        <Stack.Screen name='Chat' component={Chat} />
+        <Stack.Screen name='Chat' component={Chat} options={
+          ({ route }) => ({ title: route.params.name, headerStyle: {
+            backgroundColor: '#f4511e',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+ })
+          }/>
         <Stack.Screen name='Messages' component={MessageScreen} options={() => ({
           headerBackVisible: false,
           headerShown: false,
         })}/>
         <Stack.Screen name='MyTab' component={MyTabs} options={() => ({
           headerBackVisible: false,
+          headerShown: false,
           // headerShown: false,
         })}
         />

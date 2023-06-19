@@ -1,5 +1,5 @@
 import { collection, addDoc, query, orderBy, onSnapshot,where,getDoc,doc,updateDoc,arrayUnion,arrayRemove} from 'firebase/firestore';
-import React, { useEffect, useState,useLayoutEffect,} from 'react';
+import React, { useEffect, useState,useLayoutEffect,Fragment} from 'react';
 import { auth, db } from '../firebase';
 // import { collection, query, where } from "firebase/firestore";
 import {
@@ -15,11 +15,15 @@ import {
   Button,
   useColorScheme,
   View,
+  Dimensions,
+
   
 } from 'react-native';
 
 
 const MessageScreen = ({navigation,route})=>{
+    const dimensions = Dimensions.get('window');
+    const imageWidth = dimensions.width;
     // const [users, setUsers] = useState(null)
 
     // const getUsers = async ()=> {
@@ -45,42 +49,66 @@ const MessageScreen = ({navigation,route})=>{
       const [notiUsers, setNotiUsers] = useState([])
       const [Users, setUsers] = useState([])
   
-      const getNotiUser = async ()=> {
-          const q = query(doc(db, "users", route.params.user_id));
-          const unsubscribe = onSnapshot(q, (snapshot) => {
-            var userList1 = []
-            console.log(snapshot.data());
-            if (snapshot.data().realFriend.length > 0){
-              snapshot.data().realFriend.forEach(
-                (uid) =>
-                {
-                  const docRef1 = doc(db, "users", uid);
-                  const _unsubscribe = onSnapshot(docRef1, (snapshot) => {
-                    userList1.push(snapshot.data())
-                  console.log(snapshot.data());
-                  }) })}
-            setNotiUsers(userList1)
+      // const getNotiUser = async ()=> {
+      //     const q = query(doc(db, "users", route.params.user_id));
+      //     const unsubscribe = onSnapshot(q, (snapshot) => {
+      //       var userList1 = []
+      //       console.log(snapshot.data());
+      //       if (snapshot.data().realFriend.length > 0){
+      //         snapshot.data().realFriend.forEach(
+      //           (uid) =>
+      //           {
+      //             const docRef1 = doc(db, "users", uid);
+      //             const _unsubscribe = onSnapshot(docRef1, (snapshot) => {
+      //               userList1.push(snapshot.data())
+      //             console.log(snapshot.data());
+      //             }) })}
+      //       setNotiUsers(userList1)
             
-          })
+      //     })
   
-        }
+      //   }
   
-      useEffect(()=>{
-          getNotiUser();
-        },[])
+      // useEffect(()=>{
+      //     getNotiUser();
+      //   },[navigation])
+  
+      useEffect(() => {
+        const getUserContacts = () => {
+          const q = query(doc(db, "users", route.params.user_id));
+          const unsubscribe = onSnapshot(q,  async(snapshot) => {
+            const contactsObject = snapshot.data().realFriend;
+            const contactsSnap = await Promise.all(contactsObject.map((c) => getDoc(doc(db, "users",c))))
+            const contactDetails = contactsSnap.map((d)=> ({
+              id: d.uid,
+              ...d.data()
+            }))
+      
+            setNotiUsers(contactDetails);
+          })}
+      
+      
+        getUserContacts();
+      }, [navigation])
+
+
+
+
 
     return(
-        <SafeAreaView >
-        <StatusBar />
-        {/* <ScrollView> */}
+      <Fragment>
+        <SafeAreaView style={{ flex: 0, backgroundColor: '#F8AF00' }} />
+      <View style={{backgroundColor: '#F8B000',flex:1, alignItems: 'center'}}>
+      <Image source={require('../assets/chat_hero.jpg')} style={{  width: imageWidth , height: 270, marginBottom:15, marginTop:0}} />
+
           <View>
               <FlatList
                   data={notiUsers}
                 //   keyExtractor={(item)=>item.uid}
                   renderItem={({item}) => (
-                  <TouchableOpacity onPress={() => navigation.navigate('Chat', {name: item.name, uid: item.uid})} >
+                  <TouchableOpacity onPress={() => navigation.navigate('Chat', {name: item.name, uid: item.uid, avatar:item.avatar})} >
                       <View style={styles.card} >
-                          <Image style={styles.userImageST} source={{uri: 'https://placeimg.com/140/140/any'}} />
+                          <Image style={styles.userImageST} source={{uri: item.avatar}} />
                         <View style={styles.textArea}>
                       <Text style={styles.nameText} >{item.name}</Text>
                       <Text style={styles.msgContent} >{item.email}</Text>
@@ -90,8 +118,9 @@ const MessageScreen = ({navigation,route})=>{
                   )}
                   />
           </View>
-          {/* </ScrollView> */}
-      </SafeAreaView>
+      </View>
+      </Fragment>
+     
     )
 }
 

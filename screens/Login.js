@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet,Image,Dimensions } from 'react-native'
+import { View, StyleSheet,Image,Dimensions,TouchableOpacity } from 'react-native'
 import { Input } from 'react-native-elements';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
@@ -51,20 +51,38 @@ const Login = ({navigation}) => {
                 onChangeText={text => setPassword(text)}
                 secureTextEntry
             />
-            <Button title='sign in' style={styles.button}  onPress={signin}  
-            //     ViewComponent={LinearGradient} // Don't forget this!
-            //     linearGradientProps={{
-            //         colors: ['#FF9800', '#F44336'],
-            //         start: { x: 0, y: 0.5 },
-            //         end: { x: 1, y: 0.5 },
-            // }}
-            />
-            <Button title='register' style={styles.button} onPress={openRegisterScreen}/>
-            {/* <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
-                <Text>
-                    Sign in with Facebook
-                </Text>
-            </LinearGradient> */}
+              <TouchableOpacity
+                     onPress={() =>{
+                        signin();
+                     }
+                        }
+                     style={{
+                         backgroundColor: '#414242',
+                         paddingHorizontal: 5,
+                         paddingVertical: 10,
+                          width: '70%', borderRadius: 15,
+                          marginTop: 30,
+                          marginBottom: 15
+                     }}>
+                         <Text style={{
+                             textAlign: 'center', color: '#FFFFFF', fontSize: 18
+                         }}>Sign in</Text>
+             </TouchableOpacity>
+             <TouchableOpacity
+                     onPress={() =>{
+                        openRegisterScreen();
+                     }
+                        }
+                     style={{
+                         backgroundColor: '#4E50F7',
+                         paddingHorizontal: 5,
+                         paddingVertical: 10,
+                          width: '70%', borderRadius: 15,
+                     }}>
+                         <Text style={{
+                             textAlign: 'center', color: '#FFFFFF', fontSize: 18
+                         }}>Register</Text>
+             </TouchableOpacity>
             </View>
         </View>
     )
