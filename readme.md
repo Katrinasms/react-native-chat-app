@@ -4,8 +4,8 @@ This is a React Native Chat and Meet Anonymous Friend app built based on Google 
 
 ## Screenshots
 
-![DisplayImage](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/90930ea3-4a57-4408-acf6-a6ac71e6d492/Untitled.png)
-
+![DisplayImage](./assets/display.png)
+<!-- ![App Demo](./assets/intro_webp.webp) -->
 ## Features
 
 - User registration and authentication using email and password
