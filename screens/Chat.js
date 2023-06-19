@@ -89,27 +89,11 @@ const Chat = ({ navigation,route }) => {
         )
         );
         
-        // console.log(q);
-        // const querySnapshot = await getDocs(q);
-        // querySnapshot.forEach((doc) => {
-
-        //     console.log(doc.id, " => ", doc.data());
-        //     msgList.push({...doc.data(),createdAt:doc.data().createdAt.toDate()})
-        // });
-        // setMessages(msgList);
-
-
+       
 
       }
 
-    // const onSend = useCallback(async(messages = []) => {
-    //     const { _id, createdAt, text, user,} = messages[0]
-    //     addDoc(collection(db, 'chats'), { _id, createdAt,  text, user });
-
-      
-
-    // }, []);
-
+    
 
     const onSendMsg = async (msgArray) => {
         const msg = msgArray[0]
@@ -133,16 +117,7 @@ const Chat = ({ navigation,route }) => {
 
 
     return (
-        // <GiftedChat
-        //     messages={messages}
-        //     showAvatarForEveryMessage={true}
-        //     onSend={messages => onSend(messages)}
-        //     user={{
-        //         _id: auth?.currentUser?.email,
-        //         name: auth?.currentUser?.displayName,
-        //         avatar: auth?.currentUser?.photoURL
-        //     }}
-        // />
+    
         
         <GiftedChat 
         style={{flex: 1, backgroundColor:'#001973' }}

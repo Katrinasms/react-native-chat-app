@@ -9,7 +9,6 @@ import { auth } from '../firebase';
 import NotificationScreen from './Notification';
 import ExploreScreen from './Explore';
 import { MaterialCommunityIcons, MaterialIcons,Ionicons } from '@expo/vector-icons';
-import { BlurView } from 'expo-blur';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,16 +25,7 @@ export default  function MyTabs({route, navigation}) {
 
     useLayoutEffect(() => {
     navigation.setOptions({
-        headerLeft: () => (
-            <View style={{ marginLeft: 20 }}>
-                {/* <Avatar
-                    rounded
-                    source={{
-                        uri: auth?.currentUser?.photoURL,
-                    }}
-                /> */}
-            </View>
-        ),
+        
         headerRight: () => (
             <TouchableOpacity style={{
                 marginRight: 10
@@ -56,11 +46,7 @@ export default  function MyTabs({route, navigation}) {
         backgroundColor:'#373838',
         padding: 10
       },
-      tabBarItemStyle:{
-        // backgroundColor:'#00ff00',
-        // margin:5,
-        // borderRadius:10,
-      }
+      
     }}
 
     >

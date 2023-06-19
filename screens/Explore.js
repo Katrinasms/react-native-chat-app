@@ -46,7 +46,7 @@ const ExploreScreen = ({navigation,route})=>{
             ...d.data(),
             key: d.data().uid,
         }))
-    
+        console.log(contactDetails)
         setUsers(contactDetails);
         })}
     
@@ -86,16 +86,17 @@ const ExploreScreen = ({navigation,route})=>{
         {/* <SafeAreaView style={{flex: 1 }}> */}
         <View style={{backgroundColor: '#E5EAFD',flex:1, alignItems: 'center'}}>
         <Image source={require('../assets/Explore_hero.jpg')} style={{  width: imageWidth , height: 270, marginBottom:15, marginTop:0}} />
-        <Text style={{marginVertical: 10}} >SWIPE to find who is your FRIEND</Text>
+        <Text style={{marginVertical: 20, fontWeight: '800'}} >SWIPE to find who is your FRIEND</Text>
         
           <View style={styles.container}>
                 <SwipeListView
                     useFlatList={true}
-                    data={users.slice(0, 3)}
+                    data={users.slice(0, 4)}
                     maxToRenderPerBatch={5}
                     renderItem={ (data, rowMap) => (
                         <View style={styles.rowFront}>
                             <Text>I am {data.item.name} </Text>
+                            <Image source={{uri: data.item.avatar}} style={{width: 50 , height: 50,}}/>
                             
                         </View>
                     )}
@@ -146,7 +147,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         height: 50,
         marginBottom: 10,
-        borderRadius: 10
+        borderRadius: 10,
+        flexDirection: 'row',
     },
     rowBack: {
         alignItems: 'center',
