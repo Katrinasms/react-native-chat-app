@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
-import { apiKey,appId } from '@env';
+import { apiKey,appId,measurementId,messagingSenderId,storageBucket,projectId,authDomain } from '@env';
 
 
 
@@ -14,12 +14,12 @@ import { apiKey,appId } from '@env';
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: apiKey,
-  authDomain: "gifted-chat-app-2bf90.firebaseapp.com",
-  projectId: "gifted-chat-app-2bf90",
-  storageBucket: "gifted-chat-app-2bf90.appspot.com",
-  messagingSenderId: "719162473291",
+  authDomain: authDomain,
+  projectId: projectId,
+  storageBucket: storageBucket,
+  messagingSenderId: messagingSenderId,
   appId: appId,
-  measurementId: "G-WT4B3J68FB"
+  measurementId: measurementId
 };
 
 // Initialize Firebase
