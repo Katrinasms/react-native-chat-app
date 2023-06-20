@@ -2,10 +2,12 @@
 
 This is a React Native Chat and Meet Anonymous Friend app built based on Google Firebase and Gifted Chat. This app allows users to register, sign in, explore new friends, and chat with friends.
 
+![DisplayImage](./assets/app.gif)
+
 ## Screenshots
 
 ![DisplayImage](./assets/display.png)
-![DisplayImage](./assets/app.gif)
+
 <!-- ![App Demo](./assets/intro_webp.webp) -->
 ## Features
 
