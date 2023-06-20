@@ -3,17 +3,14 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Avatar } from 'react-native-elements';
 import { auth, db } from '../firebase';
 import { signOut } from 'firebase/auth';
-import { collection, addDoc, getDocs, query, orderBy, onSnapshot,setDoc,doc } from 'firebase/firestore';
+import { collection, addDoc,  query, orderBy, onSnapshot } from 'firebase/firestore';
 import { GiftedChat,InputToolbar,SystemMessage,Bubble } from 'react-native-gifted-chat';
-import 'react-native-get-random-values'
-import { v4 as uuidv4 } from 'uuid';
+// import 'react-native-get-random-values'
+// import { v4 as uuidv4 } from 'uuid';
 // import firestore from '@react-native-firebase/firestore';
 
 
 const Chat = ({ navigation,route }) => {
-    console.log(route.params.name)
-    console.log(route.params.uid)
-    console.log(auth?.currentUser.uid)
     const c_uid = auth?.currentUser.uid;
     const t_uid = route.params.uid;
 
@@ -25,7 +22,6 @@ const Chat = ({ navigation,route }) => {
             backgroundColor: "white",
             borderTopColor: "#E8E8E8",
             borderTopWidth: 1,
-            // padding: 8hi
           }}
         />
       );
@@ -33,14 +29,14 @@ const Chat = ({ navigation,route }) => {
 
 
     const [messages, setMessages] = useState([]);
-    const signOutNow = () => {
-        signOut(auth).then(() => {
-            navigation.reset({
-                index: 0,
-                routes: [{ name: 'Login' }],
-              });
-        }).catch((error) => {});
-    }
+    // const signOutNow = () => {
+    //     signOut(auth).then(() => {
+    //         navigation.reset({
+    //             index: 0,
+    //             routes: [{ name: 'Login' }],
+    //           });
+    //     }).catch((error) => {});
+    // }
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -89,8 +85,6 @@ const Chat = ({ navigation,route }) => {
         )
         );
         
-       
-
       }
 
     
@@ -113,9 +107,6 @@ const Chat = ({ navigation,route }) => {
 
       }
       
-
-
-
     return (
     
         

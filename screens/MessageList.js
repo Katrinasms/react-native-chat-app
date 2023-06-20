@@ -83,7 +83,6 @@ const MessageScreen = ({navigation,route})=>{
               id: d.uid,
               ...d.data()
             }))
-      
             setNotiUsers(contactDetails);
           })}
       

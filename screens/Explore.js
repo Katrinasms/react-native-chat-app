@@ -1,23 +1,15 @@
 import { collection, addDoc, getDocs, query, orderBy, onSnapshot,where,updateDoc,doc,arrayUnion,collectionGroup} from 'firebase/firestore';
 import React, { useEffect, useState,useLayoutEffect,Fragment} from 'react';
 import { auth, db } from '../firebase';
-import { Dimensions } from 'react-native'
 
-// import { collection, query, where } from "firebase/firestore";
 import {
   SafeAreaView,
-  StatusBar,
-
   StyleSheet,
   TouchableOpacity,
   Text,
   Image,
-  FlatList,
-  ScrollView,
-  Button,
-  useColorScheme,
-  LayoutAnimation,
   View,
+  Dimensions
   
 } from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
@@ -29,10 +21,6 @@ const ExploreScreen = ({navigation,route})=>{
     const [realFriend, setRealFriend] = useState([])
     const dimensions = Dimensions.get('window');
     const imageWidth = dimensions.width;
-
-
-
-
 
     useEffect(() => {
     const getUserContacts = () => {

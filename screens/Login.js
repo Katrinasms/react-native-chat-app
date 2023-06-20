@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { View, StyleSheet,Image,Dimensions,TouchableOpacity } from 'react-native'
+import { View, StyleSheet,Image,Dimensions,TouchableOpacity,Text } from 'react-native'
 import { Input } from 'react-native-elements';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {LinearGradient} from 'react-native-linear-gradient';
-import { Button, ButtonGroup, withTheme, Text } from '@rneui/themed';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+// import {LinearGradient} from 'react-native-linear-gradient';
+// import { Button, ButtonGroup, withTheme, Text } from '@rneui/themed';
 
 
 const Login = ({navigation}) => {

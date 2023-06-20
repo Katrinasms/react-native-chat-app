@@ -5,6 +5,7 @@ This is a React Native Chat and Meet Anonymous Friend app built based on Google 
 ## Screenshots
 
 ![DisplayImage](./assets/display.png)
+![DisplayImage](./assets/app.gif)
 <!-- ![App Demo](./assets/intro_webp.webp) -->
 ## Features
 
@@ -29,6 +30,11 @@ To run this app, first clone this repository. Then, navigate to the project dire
 ```
 npm install
 npx react-native run-ios
+```
+
+The corresponding dependence required:
+```
+npm install firebase react-native-gifted-chat react-native-dotenv react-native-swipe-list-view react-native-elements
 
 ```
 
